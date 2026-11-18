@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173b4f">
+  <title>Reformation Map Challenge | Europe, 1560</title>
+  <meta name="description" content="A self-checking classroom map activity about the dominant religious traditions of Europe in 1560.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#activity">Skip to the activity</a>
+
+  <header class="site-header">
+    <div class="header-copy">
+      <p class="eyebrow">Interactive history lab</p>
+      <h1>Reformation Map Challenge</h1>
+      <p class="dek">Identify the dominant religious traditions of Europe in <strong>1560</strong>.</p>
+    </div>
+    <div class="year-seal" aria-label="Year 1560">
+      <span>Europe</span>
+      <strong>1560</strong>
+    </div>
+  </header>
+
+  <main id="activity" class="app-shell">
+    <section class="topbar" aria-label="Activity controls">
+      <div class="mode-switch" role="group" aria-label="Choose activity mode">
+        <button class="mode-button is-active" id="learnMode" type="button" aria-pressed="true">
+          <span class="mode-number">01</span>
+          <span><strong>Explore</strong><small>Learn from the map</small></span>
+        </button>
+        <button class="mode-button" id="challengeMode" type="button" aria-pressed="false">
+          <span class="mode-number">02</span>
+          <span><strong>Challenge</strong><small>Test your knowledge</small></span>
+        </button>
+      </div>
+
+      <div class="progress-wrap" id="progressWrap" hidden>
+        <div class="progress-label">
+          <span>Progress</span>
+          <strong id="progressText">0 / 13</strong>
+        </div>
+        <div class="progress-track" aria-hidden="true"><span id="progressBar"></span></div>
+      </div>
+    </section>
+
+    <div class="activity-grid">
+      <section class="map-card" aria-labelledby="mapHeading">
+        <div class="map-card-header">
+          <div>
+            <p class="section-kicker">Primary source map</p>
+            <h2 id="mapHeading">Religions in Europe, 1560</h2>
+          </div>
+          <button class="ghost-button" id="resetButton" type="button" title="Reset the current mode">
+            <span aria-hidden="true">↻</span> Reset
+          </button>
+        </div>
+
+        <div class="map-frame" id="mapFrame">
+          <img id="mapImage" src="reformation-map-1560.png" alt="Historical map of the dominant religions in Europe in 1560">
+          <div class="map-wash" aria-hidden="true"></div>
+          <div class="hotspot-layer" id="hotspotLayer" aria-label="Interactive map regions"></div>
+          <div class="map-instruction" id="mapInstruction">Select a numbered marker to investigate a region.</div>
+        </div>
+
+        <p class="map-caption">
+          The map shows <strong>dominant</strong> traditions. Hatched areas indicate important religious minorities; pale yellow areas were mixed.
+        </p>
+      </section>
+
+      <aside class="side-card" aria-live="polite">
+        <section id="explorePanel">
+          <p class="section-kicker">Explore mode</p>
+          <h2>Choose a map marker</h2>
+          <p class="panel-intro">Each marker reveals the dominant religious tradition shown for that region.</p>
+
+          <div class="region-reveal is-empty" id="regionReveal">
+            <div class="reveal-number" id="revealNumber">?</div>
+            <div>
+              <p class="reveal-label" id="revealLabel">No region selected</p>
+              <h3 id="revealTradition">Start with any marker</h3>
+              <p id="revealNote">Use the numbered points on the map to explore Europe.</p>
+            </div>
+          </div>
+
+          <div class="legend" aria-label="Religious traditions">
+            <h3>Four traditions</h3>
+            <div id="legendList"></div>
+          </div>
+        </section>
+
+        <section id="challengePanel" hidden>
+          <p class="section-kicker">Challenge mode</p>
+          <div class="question-count" id="questionCount">Question 1 of 13</div>
+          <h2 id="questionTitle">Which tradition dominated this region?</h2>
+          <p class="question-region" id="questionRegion">England</p>
+          <p class="question-direction">Use the highlighted marker, then choose your answer.</p>
+
+          <div class="answer-grid" id="answerGrid"></div>
+
+          <div class="feedback" id="feedback" role="status">
+            <span class="feedback-icon" aria-hidden="true">•</span>
+            <p>Choose an answer to continue.</p>
+          </div>
+
+          <div class="score-row">
+            <span>First-try score</span>
+            <strong id="scoreText">0 correct</strong>
+          </div>
+        </section>
+      </aside>
+    </div>
+
+    <section class="thinking-strip">
+      <div class="thinking-label">Think like a historian</div>
+      <p>Why might mixed regions and areas with large religious minorities have experienced greater tension?</p>
+    </section>
+  </main>
+
+  <dialog class="completion-dialog" id="completionDialog">
+    <div class="completion-mark" aria-hidden="true">✓</div>
+    <p class="section-kicker">Challenge complete</p>
+    <h2 id="completionTitle">Excellent map reading!</h2>
+    <p id="completionSummary">You classified all 13 regions.</p>
+    <div class="final-score"><strong id="finalScore">13/13</strong><span>first-try score</span></div>
+    <div class="dialog-actions">
+      <button class="primary-button" id="retryButton" type="button">Try again</button>
+      <button class="ghost-button" id="returnExploreButton" type="button">Return to Explore</button>
+    </div>
+  </dialog>
+
+  <footer>
+    <p>Classroom note: This activity follows the source map’s categories and uses “dominant religion” rather than suggesting that every resident shared one belief.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
